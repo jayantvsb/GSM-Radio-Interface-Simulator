@@ -1,0 +1,44 @@
+function [y1,y2,y3,y4]=estimator_corr(x1,x2,x3,x4,x_train,h1)
+x_seq1=(x_train(64*8:87*8));
+% x_seq2=conj(x_train(64*8:8:87*8,2));
+% x_seq3=conj(x_train(64*8:8:87*8,3));
+% x_seq4=conj(x_train(64*8:8:87*8,4));
+y1_seq1=x1(:);
+% y1_seq2=x1(:,2);
+% y1_seq3=x1(:,3);
+% y1_seq4=x1(:,4);
+y2_seq1=x2(:);
+% y2_seq2=x2(:,2);
+% y2_seq3=x2(:,3);
+% y2_seq4=x2(:,4);
+y3_seq1=x3(:);
+% y3_seq2=x3(:,2);
+% y3_seq3=x3(:,3);
+% y3_seq4=x3(:,4);
+y4_seq1=x4(:);
+% y4_seq2=x4(:,2);
+% y4_seq3=x4(:,3);
+% y4_seq4=x4(:,4);
+%h1a=1/24*xcorr(x_seq1,y1_seq1);
+eqlms = lineareq(8,lms(0.003));
+eqlms.RefTap = 4;
+y1(:) = equalize(eqlms,y1_seq1,x_seq1);
+% y1(:,2) = equalize(eqlms,y1_seq2,x_seq2);
+% y1(:,3) = equalize(eqlms,y1_seq3,x_seq3);
+% y1(:,4) = equalize(eqlms,y1_seq4,x_seq4);
+y2(:) = equalize(eqlms,y2_seq1,x_seq1);
+% y2(:,2) = equalize(eqlms,y2_seq2,x_seq2);
+% y2(:,3) = equalize(eqlms,y2_seq3,x_seq3);
+% y2(:,4) = equalize(eqlms,y2_seq4,x_seq4);
+y3(:) = equalize(eqlms,y3_seq1,x_seq1);
+% y3(:,2) = equalize(eqlms,y3_seq2,x_seq2);
+% y3(:,3) = equalize(eqlms,y3_seq3,x_seq3);
+% y3(:,4) = equalize(eqlms,y3_seq4,x_seq4);
+y4(:) = equalize(eqlms,y4_seq1,x_seq1);
+% y4(:,2) = equalize(eqlms,y4_seq2,x_seq2);
+% y4(:,3) = equalize(eqlms,y4_seq3,x_seq3);
+% y4(:,4) = equalize(eqlms,y4_seq4,x_seq4);
+
+m=0;
+
+end
